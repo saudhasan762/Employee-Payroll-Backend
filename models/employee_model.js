@@ -28,6 +28,7 @@ const empSchema = new mongoose.Schema({
     }
 }, { timestamp: true })
 
+
 const empModel = mongoose.model("emp", empSchema);
 
 function empOperations() { }
