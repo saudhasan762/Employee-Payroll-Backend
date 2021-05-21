@@ -32,25 +32,25 @@ const empModel = mongoose.model("emp", empSchema);
 
 function empOperations() { }
 
-// empOperations.prototype.register = (obj, callback) => {
-//     empModel.find({ name: obj.name }, (error, data) => {
-//         if (error) {
-//             callback(error, null);
-//         } else {
-//             if (data.length > 0) {
-//                 callback({ success: false, message: 'User already Exist', data: "" })
-//             } else {
-//                 var newEmp = new empModel(obj);
-//                 newEmp.save((err, data) => {
-//                     if (err) {
-//                         callback(err, null);
-//                     } else {
-//                         callback({ success: true, message: 'User Registered successfully', data: "" })
-//                     }
-//                 });
-//             }
-//         }
-//     })
-// }
+empOperations.prototype.register = (obj, callback) => {
+    empModel.find({ name: obj.name }, (error, data) => {
+        if (error) {
+            callback(error, null);
+        } else {
+            if (data.length > 0) {
+                callback({ success: false, message: 'User already Exist', data: "" })
+            } else {
+                var newEmp = new empModel(obj);
+                newEmp.save((err, data) => {
+                    if (err) {
+                        callback(err, null);
+                    } else {
+                        callback({ success: true, message: 'User Registered successfully', data: "" })
+                    }
+                });
+            }
+        }
+    })
+}
 
 module.exports = new empOperations();
