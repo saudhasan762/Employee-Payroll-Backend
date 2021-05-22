@@ -20,6 +20,7 @@ exports.findAll = (data,callback) =>{
     })
 }
 
+
 exports.delete = (id,callback) =>{
     empModel.delete(id,(err,result)=>{
         if(err){

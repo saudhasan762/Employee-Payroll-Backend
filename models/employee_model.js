@@ -66,6 +66,7 @@ empOperations.prototype.findAll = (obj, callback) => {
     });
 }
 
+
 empOperations.prototype.delete = (id,callback) => {
     empModel.findByIdAndDelete(id,(err, data) => {
         if(err){

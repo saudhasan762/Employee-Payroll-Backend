@@ -49,6 +49,7 @@ exports.findAll = (req, res) => {
     }
 }
 
+
 exports.delete = (req, res) => {
     const errors = req.validationErrors();
     if (errors.length > 0) {
