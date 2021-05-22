@@ -1,4 +1,5 @@
 const service = require('../services/empService');
+const getData = require('../models/employee_model.js');
 exports.registration = (req, res) => {
     console.log(req.body);
     req.check('name').not().isEmpty().withMessage('Name is required')
@@ -29,4 +30,38 @@ exports.registration = (req, res) => {
             }
         });
     }
+}
+
+exports.findAll = (req, res) => {
+    const errors = req.validationErrors();
+    if (errors.length > 0) {
+        return res.status(422).json({
+            success: false, Message: errors[0].msg
+        })
+    } else {
+        service.findAll(req.body, (err, data) => {
+            if (err) {
+                return res.status(500).send(err);
+            } else {
+                return res.send(data);
+            }
+        });
+    }
+}
+
+exports.delete = (req, res) => {
+    const errors = req.validationErrors();
+    if (errors.length > 0) {
+        return res.status(422).json({
+            success: false, Message: errors[0].msg
+        })
+    } else {
+        service.delete(req.params.id, (err, data) => {
+            if (err) {
+                return res.status(500).send(err);
+            } else {
+                return res.status(200).send(data);
+            }
+        });
+    }    
 }

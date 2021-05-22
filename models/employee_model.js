@@ -28,7 +28,6 @@ const empSchema = new mongoose.Schema({
     }
 }, { timestamp: true })
 
-
 const empModel = mongoose.model("emp", empSchema);
 
 function empOperations() { }
@@ -55,3 +54,26 @@ empOperations.prototype.register = (obj, callback) => {
 }
 
 module.exports = new empOperations();
+
+empOperations.prototype.findAll = (obj, callback) => {
+    empModel.find({},(err, data) => {
+        if(err){
+            callback(err,null);
+        }else {
+            callback({success: true, message : 'Data retrieved succesfully',data});
+            console.log(data);
+        }
+    });
+}
+
+empOperations.prototype.delete = (id,callback) => {
+    empModel.findByIdAndDelete(id,(err, data) => {
+        if(err){
+            callback(err, null);
+        } else {
+            callback({success: true, message : 'Data deleted successfully'});
+        }
+    });
+}
+
+

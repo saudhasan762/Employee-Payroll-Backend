@@ -9,3 +9,23 @@ exports.registration = (data,callback) =>{
         }
     })
 }
+
+exports.findAll = (data,callback) =>{
+    empModel.findAll(data,(err,result)=>{
+        if(err){
+            callback(err, null);
+        } else {
+            callback(null, result);
+        }
+    })
+}
+
+exports.delete = (id,callback) =>{
+    empModel.delete(id,(err,result)=>{
+        if(err){
+            callback(err, null);
+        } else {
+            callback(null, result);
+        }
+    })
+}
