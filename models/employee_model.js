@@ -66,7 +66,6 @@ empOperations.prototype.findAll = (obj, callback) => {
     });
 }
 
-
 empOperations.prototype.delete = (id,callback) => {
     empModel.findByIdAndDelete(id,(err, data) => {
         if(err){
@@ -76,5 +75,16 @@ empOperations.prototype.delete = (id,callback) => {
         }
     });
 }
+
+empOperations.prototype.update = (id,obj, callback) => {
+    empModel.findByIdAndUpdate(id, obj, {useFindAndModify: false}, (err, data) => {
+        if(err){
+            callback(err, null);
+        } else {
+            callback({success: true, message : 'Data Updated successfully',data})
+        }
+    })
+}
+
 
 

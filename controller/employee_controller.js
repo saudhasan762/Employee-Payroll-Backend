@@ -49,7 +49,6 @@ exports.findAll = (req, res) => {
     }
 }
 
-
 exports.delete = (req, res) => {
     const errors = req.validationErrors();
     if (errors.length > 0) {
@@ -62,6 +61,26 @@ exports.delete = (req, res) => {
                 return res.status(500).send(err);
             } else {
                 return res.status(200).send(data);
+            }
+        });
+    }    
+}
+
+exports.update = (req, res) => {
+    if(!req.body){
+        return res.status(400).send({message : 'Data to be updated cannot be empty'});
+    }
+    const errors = req.validationErrors();
+    if (errors.length > 0) {
+        return res.status(422).json({
+            success: false, Message: errors[0].msg
+        })
+    } else {
+        service.update(req.params.id,req.body, (err, data) => {
+            if (err) {
+                return res.status(500).send(err);
+            } else {
+                return res.send(data);
             }
         });
     }    

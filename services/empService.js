@@ -20,9 +20,18 @@ exports.findAll = (data,callback) =>{
     })
 }
 
-
 exports.delete = (id,callback) =>{
     empModel.delete(id,(err,result)=>{
+        if(err){
+            callback(err, null);
+        } else {
+            callback(null, result);
+        }
+    })
+}
+
+exports.update = (id, obj, callback) => {
+    empModel.update(id, obj, (err, result) => {
         if(err){
             callback(err, null);
         } else {

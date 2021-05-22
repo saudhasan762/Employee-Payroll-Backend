@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const controller = require('../controller/employee_controller.js');
-router.post('/register',controller.registration);
-router.get('/findAll',controller.findAll);
-router.delete('/delete/:id',controller.delete);
+router.post('/',controller.registration);
+router.get('/',controller.findAll);
+router.delete('/:id',controller.delete);
+router.put('/:id',controller.update);
 
 module.exports = router;
