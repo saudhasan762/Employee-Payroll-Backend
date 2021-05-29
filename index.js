@@ -1,6 +1,7 @@
 const url = "mongodb://localhost:27017/empdb";
 const mongoose = require('mongoose');
 const expressValidator = require('express-validator');
+const cors = require('cors');
 
 const router = require('./routes/routes');
 // index.js
@@ -21,6 +22,7 @@ const port = process.env.PORT || "8000";
 /**
  *  App Configuration
  */
+app.use(cors());
 app.use(express.json());
 app.use(expressValidator());
 

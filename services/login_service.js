@@ -1,7 +1,7 @@
-const empModel = require('../models/employee_model');
+const loginModel = require('../models/login_model.js');
 
 exports.registration = (data,callback) =>{
-    empModel.register(data,(err,result)=>{
+    loginModel.register(data,(err,result)=>{
         if(err){
             console.log("Service Error",err);
             callback(err, null);
@@ -13,7 +13,7 @@ exports.registration = (data,callback) =>{
 }
 
 exports.findAll = (data,callback) =>{
-    empModel.findAll(data,(err,result)=>{
+    loginModel.findAll(data,(err,result)=>{
         if(err){
             callback(err, null);
         } else {
@@ -22,21 +22,14 @@ exports.findAll = (data,callback) =>{
     })
 }
 
-exports.delete = (id,callback) =>{
-    empModel.delete(id,(err,result)=>{
-        if(err){
-            callback(err, null);
-        } else {
-            callback(null, result);
-        }
-    })
-}
 
-exports.update = (id, obj, callback) => {
-    empModel.update(id, obj, (err, result) => {
+exports.login = (data,callback) =>{
+    loginModel.login(data,(err,result)=>{
         if(err){
+            console.log("Service Error",err);
             callback(err, null);
         } else {
+            console.log("Service Result",result);
             callback(null, result);
         }
     })

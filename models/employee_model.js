@@ -45,7 +45,7 @@ empOperations.prototype.register = (obj, callback) => {
                     if (err) {
                         callback(err, null);
                     } else {
-                        callback({ success: true, message: 'User Registered successfully', data: "" })
+                        callback(null,{success: true, message: 'User Registered successfully', data: "" })
                     }
                 });
             }
@@ -60,7 +60,7 @@ empOperations.prototype.findAll = (obj, callback) => {
         if(err){
             callback(err,null);
         }else {
-            callback({success: true, message : 'Data retrieved succesfully',data});
+            callback(null,{success: true, message : 'Data retrieved succesfully',data});
             console.log(data);
         }
     });
@@ -71,7 +71,7 @@ empOperations.prototype.delete = (id,callback) => {
         if(err){
             callback(err, null);
         } else {
-            callback({success: true, message : 'Data deleted successfully'});
+            callback(null,{success: true, message : 'Data deleted successfully'});
         }
     });
 }
@@ -81,7 +81,7 @@ empOperations.prototype.update = (id,obj, callback) => {
         if(err){
             callback(err, null);
         } else {
-            callback({success: true, message : 'Data Updated successfully',data})
+            callback(null,{success: true, message : 'Data Updated successfully',data})
         }
     })
 }
